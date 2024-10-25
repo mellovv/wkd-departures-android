@@ -7,6 +7,10 @@ android {
     namespace = "dev.mellovv.wkd_departures"
     compileSdk = 34
 
+    buildFeatures {
+        compose = true
+    }
+
     defaultConfig {
         applicationId = "dev.mellovv.wkd_departures"
         minSdk = 31
@@ -58,13 +62,18 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    //noinspection UseTomlInstead,GradleDependency
+    implementation("androidx.compose.material3:material3:1.3.0-alpha02")
     implementation(libs.okhttp)
     implementation(libs.play.services.location)
     implementation(libs.play.services.maps)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.material)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.glance.material3)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

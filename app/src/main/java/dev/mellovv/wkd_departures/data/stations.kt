@@ -31,6 +31,11 @@ val trainStations = mapOf(
     28 to "Polesie"
 )
 
-fun trainStationIdToName(stationId: Int): String {
-    return trainStations[stationId] ?: "Unknown Station"
+fun stationIdToName(isTrain: Boolean, stationId: Int?): String? {
+    if (stationId == null) return null
+    return if (isTrain)
+        trainStations[stationId] ?: "Unknown Station"
+    else
+        "Bus"
+
 }

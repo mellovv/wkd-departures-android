@@ -1,5 +1,6 @@
 package dev.mellovv.wkd_departures.data
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -27,7 +28,7 @@ object GlobalData {
         var Granted: Boolean = false
         var Error: Boolean = false
         var Current by mutableStateOf(null as LatLng?)
-        var Loading: Boolean = false
+        var Loading by mutableStateOf(false)
         var Request: () -> Unit = {}
         var AwaitingPermission by mutableStateOf(true)
     }

@@ -1,5 +1,6 @@
 package dev.mellovv.wkd_departures.data
 
+import android.util.Log
 import com.google.android.gms.maps.model.LatLng
 import okhttp3.Call
 import okhttp3.Callback
@@ -13,6 +14,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import java.util.stream.IntStream.range
+import kotlin.random.Random
 
 object Routes {
     private const val HOST: String = "https://wkd-departures.vercel.app/api"
@@ -61,7 +63,6 @@ fun getTrainSchedule(trainNumber: Int) {
 
             GlobalData.Trains.VehicleSchedule = trainSchedule
             GlobalData.Trains.Refreshing = false
-
         }
     })
 
@@ -93,10 +94,9 @@ fun getTrainStationSchedule(jsonObject: JSONObject) {
                 val departure = train.getInt("departure")
                 val delay = train.getInt("delay")
                 stationId = train.getInt("stationId")
+                Log.d("departure", departure.toString())
                 stationSchedule += Vehicle(number, direction, departure, delay)
-
             }
-
             GlobalData.Trains.StationId = stationId
             GlobalData.Trains.StationSchedule = stationSchedule
             GlobalData.Trains.Refreshing = false

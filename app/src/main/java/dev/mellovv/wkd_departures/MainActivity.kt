@@ -27,10 +27,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DirectionsBus
 import androidx.compose.material.icons.rounded.Train
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -125,7 +122,7 @@ fun MainApp(context: Context) {
         // Launch permission request
         if (!GlobalData.Location.Granted) {
             LaunchedEffect(Unit) {
-                launcher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                launcher.launch(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
             }
         }
     }
@@ -193,8 +190,8 @@ fun MainApp(context: Context) {
                 )
             }
         }
-        StationSchedule(isTrain = true, stationsQuantity = 28, weight = if(showTrains) 1f else 0f)
-        StationSchedule(isTrain = false, stationsQuantity = 0, weight = if(!showTrains) 1f else 0f)
+        StationSchedule(isTrain = true, stationsQuantity = 28, weight = if (showTrains) 1f else 0f)
+        StationSchedule(isTrain = false, stationsQuantity = 0, weight = if (!showTrains) 1f else 0f)
     }
 
 
